@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Map from "./Map";
 import Card from "./Card";
-import IntroPopup from "./IntroPopup";
 import FILTER_CATEGORIES from "../constants/FilterConstants";
 import bbox from "@turf/bbox";
 
@@ -298,7 +297,7 @@ class App extends Component {
           handleFilterItemChange={this.handleFilterItemChange}
           itemOptions={this.state.itemOptions}
         />
-        <IntroPopup />
+        {/* <IntroPopup /> */}
       </div>
     );
   }

@@ -3,9 +3,17 @@ import PropTypes from "prop-types";
 import Story from "./Story";
 import Filter from "./Filter";
 import Sort from "./Sort";
-import ReactList from 'react-list';
+import ReactList from "react-list";
+import Intro from "./Intro";
 
 class StoryList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isExploredClicked: false,
+    };
+  }
+
   static propTypes = {
     stories: PropTypes.array,
     handleStoriesChanged: PropTypes.func,
@@ -19,7 +27,8 @@ class StoryList extends Component {
     filterItem: PropTypes.string,
     handleFilterCategoryChange: PropTypes.func,
     handleFilterItemChange: PropTypes.func,
-    itemOptions: PropTypes.array
+    itemOptions: PropTypes.array,
+    handleExplore: PropTypes.func,
   };
 
   handleClickStory = (story, index) => {
@@ -40,6 +49,10 @@ class StoryList extends Component {
     this.props.handleStoriesChanged(option);
     this._list.scrollTo(0);
   }
+
+  handleExplore = () => {
+    this.setState({ isExploredClicked: true });
+  };
 
   renderStory = (index, key) => {
     const story = this.props.stories[index];
@@ -78,14 +91,18 @@ class StoryList extends Component {
             handleStoriesChanged={this.props.handleStoriesChanged}
           />
         </div>
-        <div className="stories">
-          <ReactList
-            ref={list => this._list = list }
-            itemRenderer={this.renderStory}
-            length={this.props.stories ? this.props.stories.length : 0}
-            type='variable'
-          />
-        </div>
+        {this.state.isExploredClicked ? (
+          <div className="stories">
+            <ReactList
+              ref={(list) => (this._list = list)}
+              itemRenderer={this.renderStory}
+              length={this.props.stories ? this.props.stories.length : 0}
+              type="variable"
+            />
+          </div>
+        ) : (
+          <Intro handleExplore={this.handleExplore} />
+        )}
       </React.Fragment>
     );
   }

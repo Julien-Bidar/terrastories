@@ -14,7 +14,11 @@ en:
   hello: Hello
   intro:
     explanation: "Terrastories are audiovisual recordings of place-based storytelling. This offline-compatible application enables local communities to locate and map their own oral storytelling traditions about places of significant meaning or value to them."
-    question: "What's a terrastory?"
+    question: "What is a terrastory?"
+    how_to_use: "How do I use Terrastories?"
+    select_category: "Select your category above. You can choose from on of three options: Region, Type of place or Speaker"
+    choose_from_list: "Choose from the list of options based on the category you chose to view the story"
+    explore: "Or simply hit explore below to discover stories all over"
   introduction: Introduction
   language: Language
   login: Login
